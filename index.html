@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea> # KISS => Keep It Simple, Smart </textarea>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 1. Short-circuit Evaluation
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                if (var1 === null || var1 === undefined || var1 === '') {
+                  console.log("VARIABLE NOT FOUND!")
+                } else {
+                  console.log(var1)
+                }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                console.log( var1 || "VARIABLE NOT FOUND!" )
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const firstName = person && person.firstNames
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 2. Arrow Functions () =>
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                function sayHello(name) {
+                  console.log('Hello', name)
+                }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const sayHello = name => console.log("Hello", name)
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 3. Avoid boring old for loop
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const list = [2, 5, 7, 2, 6, 2, 3, 5]
+                for (let i = 0; i < list.length; i++) {
+                   console.log(list[i])
+                }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                list.forEach(number => console.log(number))
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 4. Implicit Return
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                function doubleValue(value) {
+                  return value * 2
+                }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const doubleValue = value => value * 2
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const getMeasures = length => ({
+                  area: length * length,
+                  volume: length * length * length
+                })
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 5. Default Parameters
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                function volume(l, w, h) {
+                  if (w === undefined)
+                    w = 1;
+                  if (h === undefined)
+                    h = 1;
+                  return l * w * h;
+                }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const volume = ( l, w = 1, h = 1) => l * w * h
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 6. Destructuring
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const person = {
+                  first: 'Wes',
+                  last: 'Bos',
+                  country: 'Canada',
+                  city: 'Hamilton',
+                  twitter: '@wesbos'
+                }
+                const first = person.first
+                const last = person.last
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                let { first, last } = person
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                let { first = 'John' , last = 'Doe' } = person
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                let { first, last: surname} = person
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 7. Spread Operator
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const odd = [1, 2, 3]
+                const nums = [4, 5, 6].concat(odd)
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const nums = [4, 5, 6, ...odd]
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                const obj1 = { a: 1, b: 2, c: 3}
+                const obj2 = { …obj1, d: 4 }
+                // now the obj2 will be { a: 1, b: 2, c: 3, d: 4}
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 8. Importing Modules
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                import mobx from 'mobx'
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                import { observable, action, runInAction } from 'mobx'
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # 9. Map, Filter, Reduce
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                let distances = [
+                  { from: 'New York', to: 'Dhaka', distance: 12654},
+                  { from: 'Sydney', to: 'chittagong', distance: 8858},
+                  { from: 'Kolkata', to: 'Sylhet', distance: 670}
+                ]
+              
+                let total = 0
+                for(let i = 0; i < distances.length; i++){
+                  if(distances[i].distance < 10000){
+                    total += distances[i].distance * 0.621371
+                  }
+                }
+                console.log(total)
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ``` 
+                let distances = [
+                  { from: 'New York', to: 'Dhaka', distance: 12654},
+                  { from: 'Sydney', to: 'chittagong', distance: 8858},
+                  { from: 'Kolkata', to: 'Sylhet', distance: 670}
+                ]
+              
+                let total = distances.filter(item => item.distance < 10000)
+                          .map(item => item.distance * 0.621371)
+                          .reduce((prev, distance) => prev + distance, 0)
+                console.log(total)
+              ```
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              # And that's all, thank you for watching!
+            </textarea>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
